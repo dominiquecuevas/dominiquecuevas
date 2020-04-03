@@ -25,6 +25,9 @@ def reverse_words(words):
         else:
             end_i += 1
 
+    # time complexity O(n) for checking each element in input
+    # space complexity O(1) for fixed # of variables, no new list since mutating in place
+
 if __name__ == '__main__':
     import doctest
     if doctest.testmod(verbose=True).failed == 0:
