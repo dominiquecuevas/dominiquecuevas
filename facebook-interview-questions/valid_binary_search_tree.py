@@ -10,6 +10,20 @@ class BinaryTreeNode:
     >>> six = five.insert_right(6)
     >>> root.is_valid()
     True
+    >>> root.is_valid_recursively()
+    True
+
+    >>> new_root = BinaryTreeNode(50)
+    >>> thirty = new_root.insert_left(30)
+    >>> eighty = new_root.insert_right(80)
+    >>> twenty = thirty.insert_left(20)
+    >>> sixty = thirty.insert_right(60)
+    >>> seventy = eighty.insert_left(70)
+    >>> ninety = eighty.insert_right(90)
+    >>> new_root.is_valid()
+    False
+    >>> new_root.is_valid_recursively()
+    False
     '''
 
     def __init__(self, value):
@@ -42,6 +56,13 @@ class BinaryTreeNode:
     # time complexity O(n)
     # space complexity O(n)
     # depth first search with stack
+
+    def is_valid_recursively(self, floor=-float('inf'), ceiling=float('inf')):
+        if self.value < floor or self.value > ceiling:
+            return False
+        return (self.left.is_valid_recursively(floor=floor, ceiling=self.value) if self.left else True) and (
+            self.right.is_valid_recursively(floor=self.value, ceiling=ceiling) if self.right else True)
+
 
 if __name__ == '__main__':
     import doctest
