@@ -21,6 +21,16 @@ def fib(n):
         prev = curr
     return curr
 
+def fib_recursively(n):
+    if n == 0 or n == 1:
+        return n
+    return fib_recursively(n-1) + fib(n-2)
+                    
+    # fib_recursively(4)
+    #             (3)     (2)       
+    #         (2) + (1) (1) + (0)   return 1 + 1
+    #     (1) + (0)                 return 1 + 0
+
 if __name__ == '__main__':
     import doctest
     if doctest.testmod(verbose=True).failed == 0:
