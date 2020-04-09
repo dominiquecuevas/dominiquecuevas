@@ -28,6 +28,8 @@ def contains_cycle(node):
         seen.add(node)
         node = node.next
     return False
+    # time complexity O(n)
+    # space complexity O(n)
 
 def contains_cycle_runners(node):
     '''
@@ -53,6 +55,8 @@ def contains_cycle_runners(node):
         if fast is slow:
             return True
     return False
+    # time complexity O(n)
+    # space complexity O(1)
 
 if __name__ == '__main__':
     import doctest
