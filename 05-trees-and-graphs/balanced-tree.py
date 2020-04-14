@@ -41,14 +41,12 @@ def is_balanced(root):
         node, level = stack.pop()
         if level not in levels and not node.left and not node.right:
             levels.append(level)
+            if len(levels) > 2 or (len(levels) == 2 and abs(levels[0] - levels[1]) > 1):
+                return False
         if node.left:
             stack.append((node.left, level + 1))
         if node.right:
             stack.append((node.right, level + 1))
-    levels.sort()
-    for i in range(1, len(levels)):
-        if levels[i] - levels[i-1] > 1:
-            return False
     return True
 
 if __name__ == '__main__':
