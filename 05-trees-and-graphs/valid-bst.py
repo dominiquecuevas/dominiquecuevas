@@ -79,6 +79,36 @@ class BinaryTreeNode(object):
             return False
         return (self.left.is_valid_recursively(floor=floor, ceiling=self.value) if self.left else True) and (
             self.right.is_valid_recursively(floor=self.value, ceiling=ceiling) if self.right else True)
+
+def is_valid_recursively(root, floor=-float('inf'), ceiling=float('inf')):
+    '''
+    >>> root = BinaryTreeNode(4)
+    >>> two = root.insert_left(2)
+    >>> five = root.insert_right(5)
+    >>> one = two.insert_left(1)
+    >>> three = two.insert_right(3)
+    >>> six = five.insert_right(6)
+    >>> is_valid_recursively(root)
+    True
+
+    invalid at sixty
+    >>> new_root = BinaryTreeNode(50)
+    >>> thirty = new_root.insert_left(30)
+    >>> eighty = new_root.insert_right(80)
+    >>> twenty = thirty.insert_left(20)
+    >>> sixty = thirty.insert_right(60)
+    >>> seventy = eighty.insert_left(70)
+    >>> ninety = eighty.insert_right(90)
+    >>> is_valid_recursively(new_root)
+    False
+    '''
+    if not root:
+        return True
+    if root.value < floor or root.value > ceiling:
+        return False
+    return is_valid_recursively(root.left, floor=floor, ceiling=root.value) and (
+        is_valid_recursively(root.right, floor=root.value, ceiling=ceiling)
+    )
         
 
 '''
