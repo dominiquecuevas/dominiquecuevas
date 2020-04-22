@@ -59,6 +59,9 @@ def second_largest(node):
     if node.right and not node.right.left and not node.right.right:
         return node.value
     return second_largest(node.right)
+    
+    # time complexity is O(h) and space is O(h)
+    # cut down to O(n) space if didn't use recursion
 
 if __name__ == '__main__':
     import doctest
